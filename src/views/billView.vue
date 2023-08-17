@@ -5,7 +5,7 @@
             <div class="plate-bg">
                 {{ billDetail.plate }}
             </div>
-            <div class="billDetail mt-3">
+            <div class="billDetail mt-2">
                 <div class="detailContent">
                     <div class="amount">
                         <p class="text-secondary pt-3 ps-3">應繳金額</p>
@@ -68,15 +68,15 @@ export default {
 
 <style>
 .plate-bg {
-    background-image: url(../assets/blank_plate3.png);
+    background-image: url(../assets/blank_plate3-sm.png);
     background-repeat: no-repeat;
-    height: 160px;
+    max-height: auto;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
-    font-size: 50px;
+    padding: 30px 0;
+    font-size: 32px;
 }
 
 .billDetail {
