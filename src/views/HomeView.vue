@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="bg-dark text-white text-center pb-3 pt-5">停車費查詢</div>
+    <div class="bg-dark text-white text-center py-3">停車費查詢</div>
     <div class="container">
       <div class="form-floating mt-5 d-flex">
         <input type="text" class="form-control" id="floatingInput" placeholder="請輸入車牌號碼搜尋" v-model="plate"

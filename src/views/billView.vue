@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div class="bg-dark text-white text-center pb-3 pt-5 mb-3">停車費繳費</div>
+        <div class="bg-dark text-white text-center py-3 mb-3">停車費繳費</div>
         <div class="container">
             <div class="plate-bg">
                 {{ billDetail.plate }}
@@ -22,15 +22,17 @@
                         <button class="btn" :class="billDetail.amount == 0 ? 'btn-secondary' : 'btn-primary'">繳費離場</button>
                     </div>
                     <div v-if="billDetail.amount == 0" class="warningInfo">
-                        <p class="text-success fs-6 mt-1"><img src="../assets/icons8-info-success.svg" alt="info-icon"> 無需繳費，請儘速離場，謝謝！</p>
+                        <p class="text-success fs-6 mt-1"><img src="../assets/icons8-info-success.svg" alt="info-icon">
+                            無需繳費，請儘速離場，謝謝！</p>
                     </div>
                     <div class="discountDetail mt-2 pb-2">
                         <p class="text-center">折抵明細</p>
-                        <p class="text-secondary">緩衝時間<span class="text-primary">　{{ billDetail.discount.buffer }} 小時</span></p>
-                        <p class="text-secondary">發票折抵<span class="text-primary">　{{ billDetail.discount.coupon }} 小時</span></p>
+                        <p class="text-secondary">緩衝時間<span class="text-primary">　{{ billDetail.discount.buffer }} 小時</span>
+                        </p>
+                        <p class="text-secondary">發票折抵<span class="text-primary">　{{ billDetail.discount.coupon }} 小時</span>
+                        </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>

@@ -38,7 +38,7 @@ export default {
   </header>
   <div class="content">
     <RouterView />
-    <footer class="mt-2">
+    <footer class="mt-5">
       <div class="bg-dark text-white text-center fixed-bottom py-2">Copyright&copy; {{ new Date().getFullYear() }} MitWit
         Inc. All rights reserved.</div>
     </footer>
