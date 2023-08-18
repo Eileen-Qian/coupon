@@ -36,14 +36,35 @@ export default {
   <header>
     <VueLoading v-model:active="isLoading"></VueLoading>
   </header>
-  <RouterView />
-  <footer>
-    <div class="bg-dark text-white text-center fixed-bottom py-2">Copyright&copy; {{ new Date().getFullYear() }} MitWit Inc. All rights reserved.</div>
-  </footer>
+  <div class="content">
+    <RouterView />
+    <footer class="mt-2">
+      <div class="bg-dark text-white text-center fixed-bottom py-2">Copyright&copy; {{ new Date().getFullYear() }} MitWit
+        Inc. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <div class="noPC fs-3 text-center">
+    不支援電腦使用，請改用手機裝置
+  </div>
 </template>
 
 <style scoped>
-footer{
+footer {
   font-size: 8px;
+}
+
+.noPC{
+  display: none;
+}
+
+@media (min-width: 912px) {
+  .noPC {
+    display: block;
+  }
+
+  .content {
+    display: none;
+  }
 }
 </style>
