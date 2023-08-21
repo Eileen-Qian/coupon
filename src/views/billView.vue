@@ -18,7 +18,7 @@
                         </p>
                     </div>
                     <div class="btns d-flex justify-content-around">
-                        <button class="btn btn-primary">發票折抵</button>
+                        <button class="btn btn-primary" id="toggleMyModal" @click="openModal">發票折抵</button>
                         <button class="btn" :class="billDetail.amount == 0 ? 'btn-secondary' : 'btn-primary'">繳費離場</button>
                     </div>
                     <div v-if="billDetail.amount == 0" class="warningInfo">
@@ -34,6 +34,48 @@
                     </div>
                 </div>
             </div>
+            <!-- modal -->
+            <div class="modal fade" id="discountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm position-absolute top-40 start-50 translate-middle" style="width: 75%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!-- <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1> -->
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div v-if="isScan">
+                                掃描中...
+                            </div>
+                            <div v-else>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="discountNum"
+                                        v-model="discountInfo.discountNum" placeholder="請輸入折扣券號碼或發票號碼">
+                                    <label for="discountNum">折扣券號碼或發票號碼</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="invoiceAmount"
+                                        v-model="discountInfo.invoiceAmount" placeholder="請輸入發票金額">
+                                    <label for="invoiceAmount">發票金額</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-primary me-5" @click="scanInput">{{ isScan ? '手動輸入' : '掃描輸入'
+                                }}</button>
+                                <div class="btns">
+                                    <button type="button" class="btn btn-outline-secondary me-1"
+                                        data-bs-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-outline-primary"
+                                        @click="getDiscount(discountInfo)">確認</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 </template>
@@ -41,7 +83,9 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 import router from '../router';
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
+// const discountModal = document.getElementById('discountModal');
+// const modalToggle = document.getElementById('toggleMyModal');
 
 export default {
     data() {
@@ -57,6 +101,11 @@ export default {
                     buffer: 0.5, // 緩衝時間
                     coupon: 0.5
                 }
+            },
+            isScan: true,
+            discountInfo: {
+                discountNum: '',
+                invoiceAmount: null,
             }
         }
     },
@@ -64,7 +113,32 @@ export default {
         RouterView,
         RouterLink,
     },
-    methods: {}
+    methods: {
+        // initModal() {
+            // const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
+            // const myModal = new bootstrap.Modal(discountModal);
+            // const modalToggle = document.getElementById('toggleMyModal');
+        // },
+        openModal() {
+            const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
+            const modalToggle = document.getElementById('toggleMyModal');
+            // console.log("open");
+            myModal.show(modalToggle);
+        },
+        scanInput() {
+            this.isScan = !this.isScan;
+        },
+        getDiscount() {
+            // console.log(this.discountInfo);
+            const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
+            const modalToggle = document.getElementById('toggleMyModal');
+            myModal.hide(modalToggle);
+            // console.log(myModal)
+        }
+    },
+    mounted() {
+        // this.initModal()
+    }
 }
 </script>
 
