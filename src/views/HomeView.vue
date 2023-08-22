@@ -1,11 +1,10 @@
 <template>
   <main>
     <div class="bg-dark text-white text-center py-3">停車費查詢</div>
-    <div class="container">
-      <div class="form-floating mt-5 d-flex">
-        <input type="text" class="form-control" id="floatingInput" placeholder="請輸入車牌號碼搜尋" v-model="plate"
-          @keydown.enter="search(plate)">
-        <label for="floatingInput">請輸入車牌號碼搜尋</label>
+    <div class="container mt-5">
+      <label for="exampleInputEmail1" class="form-label">車牌號碼</label>
+      <div class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="請輸入車牌號碼搜尋" v-model="plate" @keydown.enter="search(plate)">
         <img src="../assets/icons8-search.svg" alt="search" class="mx-3" @click="search(plate)">
       </div>
       <p v-if="!hasPlate" class="text-warning fs-6 mt-1"><img src="../assets/icons8-info.svg" alt=""> 查無此車號，請重新輸入</p>

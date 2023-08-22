@@ -45,29 +45,36 @@
                         </div>
                         <div class="modal-body">
                             <div v-if="isScan">
-                                掃描中...
+                                <div class="scan">
+                                    
+                                </div>
+                                <div class="form-floating my-3">
+                                    <input type="text" class="form-control fs-5" id="discountNum"
+                                        v-model="discountInfo.discountNum" placeholder="請輸入折扣券號碼或發票號碼">
+                                    <label for="discountNum" class="fs-6">折扣券號碼或發票號碼</label>
+                                </div>
                             </div>
                             <div v-else>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="discountNum"
-                                        v-model="discountInfo.discountNum" placeholder="請輸入折扣券號碼或發票號碼">
-                                    <label for="discountNum">折扣券號碼或發票號碼</label>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">折扣券號碼或發票號碼<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="discountNum" placeholder="請輸入折扣券號碼或發票號碼">
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="invoiceAmount"
-                                        v-model="discountInfo.invoiceAmount" placeholder="請輸入發票金額">
-                                    <label for="invoiceAmount">發票金額</label>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">發票金額</label>
+                                    <input type="text" class="form-control" id="discountNum" placeholder="請輸入發票金額">
                                 </div>
                             </div>
+
                         </div>
                         <div class="modal-footer">
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-primary me-5" @click="scanInput">{{ isScan ? '手動輸入' : '掃描輸入'
-                                }}</button>
-                                <div class="btns">
-                                    <button type="button" class="btn btn-outline-secondary me-1"
+                                <button class="btn btn-primary me-4" @click="scanInput">
+                                    {{ isScan ? '手動輸入' : '掃描輸入' }}</button>
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary me-1"
                                         data-bs-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-outline-primary"
+                                    <button type="button" class="btn btn-sm btn-outline-primary"
                                         @click="getDiscount(discountInfo)">確認</button>
                                 </div>
                             </div>
@@ -115,9 +122,9 @@ export default {
     },
     methods: {
         // initModal() {
-            // const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
-            // const myModal = new bootstrap.Modal(discountModal);
-            // const modalToggle = document.getElementById('toggleMyModal');
+        // const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
+        // const myModal = new bootstrap.Modal(discountModal);
+        // const modalToggle = document.getElementById('toggleMyModal');
         // },
         openModal() {
             const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
@@ -129,10 +136,10 @@ export default {
             this.isScan = !this.isScan;
         },
         getDiscount() {
-            // console.log(this.discountInfo);
+            console.log(this.discountInfo);
             const myModal = new bootstrap.Modal(document.getElementById('discountModal'));
             const modalToggle = document.getElementById('toggleMyModal');
-            myModal.hide(modalToggle);
+            // myModal.hide(modalToggle);
             // console.log(myModal)
         }
     },
@@ -169,6 +176,13 @@ export default {
 
 .amount {
     border-bottom: 1px solid gray;
+}
+
+.scan{
+    background: gray;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
 }
 </style>
   
