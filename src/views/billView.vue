@@ -100,7 +100,7 @@ export default {
             isLoading: false,
             billDetail: {
                 plate: "ABC-1111",
-                amount: 50,
+                amount: 0,
                 location: '台中誠品',
                 inTime: '2023-01-01 11:11:11',
                 totalDiscount: 1,
